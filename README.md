@@ -36,3 +36,10 @@ notes note list -c "Personal"
 The explanation of all commmands and subcommands are detailed in the documentaion (`doc/documentation.md`), with
 examples and "how to"'s.
 Read it to learn how to use `notes`.
+
+----------------
+
+## Contributing
+
+If you'd like to participate to the development of `notes`, let me know, I'll be glad to have you!
+There's a Trello board btw: [https://trello.com/b/Oai9dwRV/notes-development](https://trello.com/b/Oai9dwRV/notes-development)

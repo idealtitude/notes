@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024">
+    <defs>
+        <filter id="b" width="1.055" height="1.063" x="-.028" y="-.032" style="color-interpolation-filters:sRGB">
+            <feGaussianBlur result="blur" stdDeviation="7.19"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="atop" result="composite1"/>
+            <feComposite in2="composite1" operator="in" result="composite2"/>
+            <feComposite in2="composite2" operator="in" result="composite3"/>
+        </filter>
+        <filter id="c" width="1.378" height="1.322" x="-.176" y="-.146" style="color-interpolation-filters:sRGB">
+            <feFlood flood-color="#696969" flood-opacity=".8" result="flood"/>
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="44.502"/>
+            <feOffset dx="14.894" dy="14.589" in="blur" result="offset"/>
+            <feComposite in="flood" in2="offset" operator="in" result="comp1"/>
+            <feComposite in="SourceGraphic" in2="comp1" result="comp2"/>
+        </filter>
+    </defs>
+    <g style="display:inline">
+        <rect width="1024" height="1024" ry="128" style="display:inline;fill:#1a1a1a;stroke:none;stroke-width:48;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"/>
+    </g>
+    <g style="display:inline">
+        <path d="M128 112v32h192v-32zm258.05 2.05v27.9h503.9v-27.9zm184.294 120.294v32H896v-32zM128 240v32h384v-32zm2.498 126.828v32h96v-32zm525.502.31v33.723h236.305V367.14ZM272 368v32h352v-32zm359.615 126.969v33.851h259.602V494.97ZM124.43 496v32h391.14v-32zm10.71 128v32H368v-32zm278.01 1.58v28.84h476.866v-28.84zm153.64 126.068v32.704h323.958v-32.704ZM135.14 752v32H512v-32z" style="display:inline;fill:#f2103c;fill-opacity:1;stroke:#f2103c;stroke-width:8;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;filter:url(#b)" transform="translate(-81.003 -80.982)scale(1.15616)"/>
+        <g style="display:inline;filter:url(#c)" transform="matrix(1.04247 0 0 1.04247 16.35 -24.455)">
+            <path d="m168.126 88.377-61.292 61.292 306.457 306.457-306.457 306.457 61.292 61.291 367.748-367.748z" style="display:inline;fill:#e6e6e6;stroke:#e6e6e6;stroke-width:32.5047;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"/>
+            <path d="M111.003 879.003v49.994h726.894v-49.994z" style="display:inline;fill:#1a1a1a;stroke:#e6e6e6;stroke-width:52.2062;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+    </g>
+</svg>

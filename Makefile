@@ -11,13 +11,13 @@ SRCS := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_DEBUG := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.debug.o, $(SRCS))
 OBJ_RELEASE := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.release.o, $(SRCS))
 
-CORE_OBJ_DEBUG := $(filter %quicknotes_core.debug.o, $(OBJ_DEBUG))
-CFFI_OBJ_DEBUG := $(filter %quicknotes_cffi.debug.o, $(OBJ_DEBUG))
-CORE_OBJ_RELEASE := $(filter %quicknotes_core.release.o, $(OBJ_RELEASE))
-CFFI_OBJ_RELEASE := $(filter %quicknotes_cffi.release.o, $(OBJ_RELEASE))
+CORE_OBJ_DEBUG := $(filter %notes_core.debug.o, $(OBJ_DEBUG))
+CFFI_OBJ_DEBUG := $(filter %notes_cffi.debug.o, $(OBJ_DEBUG))
+CORE_OBJ_RELEASE := $(filter %notes_core.release.o, $(OBJ_RELEASE))
+CFFI_OBJ_RELEASE := $(filter %notes_cffi.release.o, $(OBJ_RELEASE))
 
-CORE_LIB := libquicknotes_core.so
-CFFI_LIB := _quicknotes_cffi.so
+CORE_LIB := libnotes_core.so
+CFFI_LIB := _notes_cffi.so
 
 .PHONY: all debug release run clean
 
@@ -30,7 +30,7 @@ release: CXXFLAGS := $(CXXFLAGS_RELEASE)
 release: $(BUILD_DIR) release_core release_cffi
 
 run: all
-	./quicknotes.py
+	./notes.py
 
 debug_core: $(CORE_OBJ_DEBUG)
 	$(CXX) $(SHARED_FLAGS) $(LDFLAGS) -o $(CORE_LIB) $^

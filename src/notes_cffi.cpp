@@ -1,19 +1,19 @@
-#include "quicknotes_core.h"
+#include "notes_core.h"
 #include <cstring>
 
 extern "C"
 {
-	QuickNotesCore* quicknotes_core_new()
+	NotesCore* Notes_core_new()
 	{
-		return new QuickNotesCore();
+		return new NotesCore();
 	}
 
-	int quicknotes_core_add_note(QuickNotesCore* core, const char* content)
+	int Notes_core_add_note(NotesCore* core, const char* content)
 	{
 		return core->add_note(content);
 	}
 
-	const char* quicknotes_core_show_note(QuickNotesCore* core, int id)
+	const char* Notes_core_show_note(NotesCore* core, int id)
 	{
 		std::string result = core->show_note(id);
 		char* c_result = new char[result.length() + 1];

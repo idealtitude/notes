@@ -1,5 +1,5 @@
-#ifndef QUICKNOTES_CORE_H
-#define QUICKNOTES_CORE_H
+#ifndef NOTES_CORE_H
+#define NOTES_CORE_H
 
 #include <string>
 #include <vector>
@@ -10,10 +10,10 @@ struct Note
 	std::string content;
 };
 
-class QuickNotesCore
+class NotesCore
 {
   public:
-	QuickNotesCore();
+	NotesCore();
 
 	int add_note(const std::string& content);
 	std::string show_note(int id);
@@ -24,4 +24,4 @@ class QuickNotesCore
 	int next_id;
 };
 
-#endif // QUICKNOTES_CORE_H
+#endif // NOTES_CORE_H

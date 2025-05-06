@@ -15,7 +15,7 @@ import argparse
 
 
 ### App meta ###
-__app_name__     : str = "quicknotes"
+__app_name__     : str = "notes"
 __author__       : str = "idealtitude"
 __version__      : str = "0.0.1"
 __license__      : str = "MT108"
@@ -32,15 +32,15 @@ USER_HOME        : str = os.path.expanduser("~")
 
 ffi = FFI()
 ffi.cdef("""
-    typedef struct QuickNotesCore QuickNotesCore;
-    QuickNotesCore* quicknotes_core_new();
-    int quicknotes_core_add_note(QuickNotesCore* core, const char* content);
-    const char* quicknotes_core_show_note(QuickNotesCore* core, int id);
+    typedef struct notesCore notesCore;
+    notesCore* notes_core_new();
+    int notes_core_add_note(notesCore* core, const char* content);
+    const char* notes_core_show_note(notesCore* core, int id);
 """)
 
-lib = ffi.dlopen("./_quicknotes_cffi.so")
+lib = ffi.dlopen("./_notes_cffi.so")
 
-core = lib.quicknotes_core_new()
+core = lib.notes_core_new()
 
 
 def get_args() -> Any:
@@ -68,11 +68,11 @@ def get_args() -> Any:
 
 
 def add_note(note):
-    note_id = lib.quicknotes_core_add_note(core, note.encode('utf-8'))
+    note_id = lib.notes_core_add_note(core, note.encode('utf-8'))
     print(f"Note added with ID: {note_id}")
 
 def show_note(note_id):
-    result = lib.quicknotes_core_show_note(core, note_id)
+    result = lib.notes_core_show_note(core, note_id)
     print(ffi.string(result).decode('utf-8'))
 
 def list_notes():

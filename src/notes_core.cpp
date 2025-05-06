@@ -1,17 +1,17 @@
-#include "quicknotes_core.h"
+#include "notes_core.h"
 
-QuickNotesCore::QuickNotesCore()
+NotesCore::NotesCore()
 	: next_id(1)
 {}
 
-int QuickNotesCore::add_note(const std::string& content)
+int NotesCore::add_note(const std::string& content)
 {
 	Note newNote = {next_id, content};
 	notes.push_back(newNote);
 	return next_id++;
 }
 
-std::string QuickNotesCore::show_note(int id)
+std::string NotesCore::show_note(int id)
 {
 	for (const auto& note : notes)
 	{
@@ -24,7 +24,7 @@ std::string QuickNotesCore::show_note(int id)
 	return "Note not found.";
 }
 
-std::vector<Note> QuickNotesCore::list_notes()
+std::vector<Note> NotesCore::list_notes()
 {
 	return notes;
 }

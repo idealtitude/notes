@@ -3,7 +3,7 @@ bin/*
 build/
 tmp/
 .vscode/
-quicknotes.code-workspace
+notes.code-workspace
 
 # C, C++
 # Prerequisites

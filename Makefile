@@ -17,9 +17,9 @@ CORE_OBJ_RELEASE := $(filter %notes_core.release.o, $(OBJ_RELEASE))
 CFFI_OBJ_RELEASE := $(filter %notes_cffi.release.o, $(OBJ_RELEASE))
 
 CORE_LIB := libnotes_core.so
-CFFI_LIB := _notes_cffi.so
+CFFI_LIB := notes_cffi.so
 
-.PHONY: all debug release run clean
+.PHONY: all debug release run clean cleanall
 
 all: debug
 
@@ -54,4 +54,7 @@ $(BUILD_DIR):
 	mkdir -p $@
 
 clean:
-	rm -rf $(BUILD_DIR) *.so
+	rm -rf $(BUILD_DIR)
+
+cleanall: clean
+	rm *.so

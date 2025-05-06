@@ -1,18 +1,18 @@
-# quicknotes
+# notes
 
-**quicknotes** is a simple text based software for taking notes.
+**notes** is a simple text based software for taking notes.
 
 ## WARNING
 
 **This is a Work In Progress!**
 
-quicknotes is just at its very early creation stage, it's not usable!
+notes is just at its very early creation stage, it's not usable!
 
 ## Presentation
 
-![QuickNotes Logo](./quicknotes_logo-512x512.png "quicknotes logo")
+![Notes Logo](./notes.png "notes logo")
 
-**quicknotes** is a very simple terminal app for notes management; you can create, edit, delete your notes, classify them into categories, attach tags to your notes, define templates for the creation of new notes, etc.
+**notes** is a very simple terminal app for notes management; you can create, edit, delete your notes, classify them into categories, attach tags to your notes, define templates for the creation of new notes, etc.
 
 ### Features
 
@@ -40,7 +40,7 @@ These features are self explanatory...
 
 **TODO:** complete this section
 
-### Building quicknotes
+### Building notes
 
 **TODO:** complete this section
 
@@ -57,10 +57,10 @@ These features are self explanatory...
 **Create a note:**
 
 ```bash
-quicknotes add note --name='My Note Title' --category='Various' --tags='example, new, note'
+notes add note --name='My Note Title' --category='Various' --tags='example, new, note'
 
 # or use the aliases and short options
-qn a n -n 'My Note Title' -c 'Various' -t 'example, new, note'
+notes a n -n 'My Note Title' -c 'Various' -t 'example, new, note'
 ```
 
 **TODO:** complete this section

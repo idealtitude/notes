@@ -2,11 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-This is the main entry point of the app
+This is the entry point of the app
 """
-
-# TODO: implement `uv` Workspace:
-# https://docs.astral.sh/uv/concepts/projects/workspaces/#workspace-layouts
 
 import sys
 import os
@@ -30,34 +27,9 @@ __app_license__: str = "MT108"
 EXIT_SUCCESS: int = 0
 EXIT_FAILURE: int = 1
 # Paths used by the app
-LIB_DIR: str = "libnotes"
 APP_PATH: str = os.path.dirname(os.path.realpath(__file__))
-APP_LIB_PATH: str = os.path.join(APP_PATH, LIB_DIR)
 USER_CWD: str = os.getcwd()
 USER_HOME: str = os.path.expanduser("~")
-
-
-def load_lib() -> TuplAny:
-    ffi = FFI()
-    ffi.cdef(
-        """
-        typedef struct NotesCore notesCore;
-        notesCore* Notes_core_new();
-        int Notes_core_add_note(notesCore* core, const char* content);
-        const char* Notes_core_show_note(notesCore* core, int id);
-    """
-    )
-
-    core: Any = None
-    lib: Any = None
-    lib_path: str = f"{APP_LIB_PATH}/notes_cffi.so"
-    try:
-        core = ffi.dlopen(lib_path)
-        lib = core.Notes_core_new()
-    except FileNotFoundError as ex:
-        print(f"Error while loading libnotes; expected location:\n{lib_path}")
-
-    return ffi, core, lib
 
 
 def get_args() -> argparse.Namespace:
@@ -107,47 +79,19 @@ def get_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-class Notes:
-    """libnotes API calls"""
-
-    def __init__(self) -> None:
-        """Calling load_lib from here"""
-        libres: TuplAny = load_lib()
-        self.ffi: Any = libres[0]
-        self.core: Any = libres[1]
-        self.lib: Any = libres[2]
-
-    def add_note(self, note_name: str) -> None:
-        note_id = self.lib.Notes_core_add_note(self.core, note_name.encode("utf-8"))
-        print(f"Note added with ID: {note_id}")
-
-    def show_note(self, note_id: int) -> None:
-        result = self.lib.Notes_core_show_note(self.core, note_id)
-        print(self.ffi.string(result).decode("utf-8"))
-
-    def list_notes(self) -> None:
-        # Implement later, as it is more complex with cffi.
-        print("Listing notes (not yet implemented)")
-
-
-def main(arguments: list[str]) -> int:
+def main() -> int:
     """Entry point, main function"""
-    if len(arguments) == 1:
-        print("Error: missing arguments")
-        return EXIT_FAILURE
-
     args: argparse.Namespace = get_args()
-    notes: Notes = Notes()
 
     if notes.core is None:
         return EXIT_FAILURE
 
     if args.command == "add":
-        notes.add_note(args.name)
+        print("Not implemented yet")
     elif args.command == "show":
-        notes.show_note(args.note_id)
+        print("Not implemented yet")
     elif args.command == "list":
-        notes.list_notes()
+        print("Not implemented yet")
     else:
         args.print_help()
 
@@ -155,4 +99,4 @@ def main(arguments: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv))
+    sys.exit(main())

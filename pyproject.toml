@@ -1,0 +1,23 @@
+[project]
+name = "notes"
+version = "0.0.1"
+description = "A small and simple command line tool for notes management"
+authors = [
+    {name = "idealtitude",email = "idealtitude@gmail.com"}
+]
+license = {text = "MT108"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "rich (>=14.0.0,<15.0.0)",
+    "prompt-toolkit (>=3.0.51,<4.0.0)"
+]
+
+[tool.poetry]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

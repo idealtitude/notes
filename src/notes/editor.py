@@ -18,10 +18,7 @@ class Editor:
         bindings: KeyBindings = KeyBindings()
         # `Ctrl+S` to exit
         @bindings.add('c-s')
-        def _(event):
-            """
-            Accepter l'entrée multi-lignes avec Ctrl+s.
-            """
+        def _(event: Any):
             event.app.exit(result=event.app.current_buffer.text)
 
         session: PromptSession = PromptSession(

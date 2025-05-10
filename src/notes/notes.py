@@ -9,6 +9,7 @@ from typing import Any
 import sys
 import os
 import argparse
+
 # import re
 import importlib.resources
 
@@ -80,7 +81,9 @@ def get_args() -> argparse.Namespace:
 
 def load_config() -> Any:
     """Loading configuration and settings path to db"""
-    config_path_in_package: Any = importlib.resources.files('notes').joinpath('data/notes.conf')
+    config_path_in_package: Any = importlib.resources.files("notes").joinpath(
+        "data/notes.conf"
+    )
     config_content: Any
     with open(config_path_in_package) as f:
         config_content = f.read()

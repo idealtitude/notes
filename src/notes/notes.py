@@ -5,17 +5,16 @@
 This is the entry point of the app
 """
 
+from typing import Any
 import sys
 import os
-
-# import re
-from cffi import FFI
-
-from typing import Any
 import argparse
+# import re
+import importlib.resources
 
+
+# Custom type for argparse return type
 type TuplAny = tuple[Any, Any, Any]
-
 
 # Meta
 __app_name__: str = "notes"
@@ -79,12 +78,24 @@ def get_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def load_config() -> Any:
+    """Loading configuration and settings path to db"""
+    config_path_in_package: Any = importlib.resources.files('notes').joinpath('data/notes.conf')
+    config_content: Any
+    with open(config_path_in_package) as f:
+        config_content = f.read()
+
+    # Process config_content
+    # → config: dict[str, str] = parse_config(config_content)
+    # en attendant ↓
+    return config_content
+
+
 def main() -> int:
     """Entry point, main function"""
     args: argparse.Namespace = get_args()
-
-    if notes.core is None:
-        return EXIT_FAILURE
+    config: Any = load_config()
+    print(f"Conf: {config}")
 
     if args.command == "add":
         print("Not implemented yet")
@@ -93,7 +104,7 @@ def main() -> int:
     elif args.command == "list":
         print("Not implemented yet")
     else:
-        args.print_help()
+        print("Rest not implemented either")
 
     return EXIT_SUCCESS
 

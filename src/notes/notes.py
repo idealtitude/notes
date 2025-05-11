@@ -11,11 +11,13 @@ import os
 import argparse
 
 # import re
+import iniconfig
 import importlib.resources
 
 
 # Custom type for argparse return type
 type TuplAny = tuple[Any, Any, Any]
+type ConfigDict = dict[str, dict[str, str]]
 
 # Meta
 __app_name__: str = "notes"
@@ -84,21 +86,36 @@ def load_config() -> Any:
     config_path_in_package: Any = importlib.resources.files("notes").joinpath(
         "data/notes.conf"
     )
-    config_content: Any
-    with open(config_path_in_package) as f:
-        config_content = f.read()
+    ini: Any = iniconfig.IniConfig(config_path_in_package)
+    # with open(config_path_in_package) as f:
+    #     config_content = f.read()
 
     # Process config_content
     # → config: dict[str, str] = parse_config(config_content)
     # en attendant ↓
-    return config_content
+    conf: ConfigDict = {}
+    conf["editor"] = {}
+    conf["editor"]["bin"] = ini["editor"]["bin"]
+    conf["editor"]["path"] = ini["editor"]["path"]
+    conf["category"] = {}
+    conf["category"]["default"] = ini["category"]["default"]
+    conf["template"] = {}
+    conf["template"]["default"] = ini["template"]["default"]
+    conf["template"]["path"] = ini["template"]["path"]
+
+    return conf
 
 
 def main() -> int:
     """Entry point, main function"""
     args: argparse.Namespace = get_args()
     config: Any = load_config()
-    print(f"Conf: {config}")
+    print("Printing config:")
+
+    for k, v in config.items():
+        print(f"\n\033[1mSection\033[0m {k}:")
+        for sk, sv in v.items():
+            print(f"\t{sk}: {sv}")
 
     if args.command == "add":
         print("Not implemented yet")
